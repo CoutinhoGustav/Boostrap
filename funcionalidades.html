@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Funcionalidades e Uso do Bootstrap - Meu Site Bootstrap</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <style>
+        /* Variáveis CSS para o Tema Claro (padrão) */
+        :root {
+            --bs-body-bg: #ffffff; /* Fundo principal */
+            --bs-body-color: #212529; /* Cor do texto principal */
+            --bs-card-bg: #ffffff; /* Fundo dos cards */
+            --bs-card-color: #212529; /* Cor do texto dos cards */
+            --bs-hero-bg: #f8f9fa; /* Fundo da seção Hero */
+            --bs-hero-color: #212529; /* Cor do texto da seção Hero */
+            --bs-footer-bg: #343a40; /* Fundo do rodapé (mantido escuro) */
+            --bs-footer-color: #ffffff; /* Cor do texto do rodapé (mantido branco) */
+        }
+
+        /* Variáveis CSS para o Tema Escuro */
+        body.dark-theme {
+            --bs-body-bg: #212529; /* Fundo principal escuro */
+            --bs-body-color: #f8f9fa; /* Texto principal claro */
+            --bs-card-bg: #343a40; /* Fundo dos cards escuro */
+            --bs-card-color: #f8f9fa; /* Texto dos cards claro */
+            --bs-hero-bg: #495057; /* Fundo da seção Hero escuro */
+            --bs-hero-color: #ffffff; /* Texto da seção Hero claro */
+            --bs-footer-bg: #000000; /* Fundo do rodapé ainda mais escuro */
+            --bs-footer-color: #ffffff; /* Texto do rodapé branco */
+        }
+
+        /* Estilos usando as variáveis */
+        body {
+            background-color: var(--bs-body-bg);
+            color: var(--bs-body-color);
+            transition: background-color 0.3s ease, color 0.3s ease; /* Transição para mudança de cor na plataforma*/
+        }
+
+        .section-header {
+            background-color: var(--bs-hero-bg);
+            color: var(--bs-hero-color);
+            padding: 60px 0;
+            text-align: center;
+            margin-bottom: 30px;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        .card {
+            background-color: var(--bs-card-bg);
+            color: var(--bs-card-color);
+            margin-bottom: 20px;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        .card-body {
+            color: var(--bs-card-color);
+        }
+
+        .footer {
+            background-color: var(--bs-footer-bg);
+            color: var(--bs-footer-color);
+            padding: 20px 0;
+            text-align: center;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        /* Ajustes para navbar em dark-theme para não conflitar com navbar-dark */
+        body.dark-theme .navbar.bg-dark {
+            background-color: var(--bs-footer-bg) !important;
+        }
+        /* Ícones de serviço maiores */
+        .feature-icon {
+            font-size: 3rem;
+            color: var(--bs-primary); /* Usa a cor primária do Bootstrap */
+            margin-bottom: 15px;
+        }
+        body.dark-theme .feature-icon {
+             color: var(--bs-info); /* Mudar a cor do ícone no modo escuro */
+        }
+        .code-snippet {
+            background-color: #e9ecef;
+            padding: 15px;
+            border-radius: 5px;
+            overflow-x: auto; /* Para rolagem em códigos longos */
+            color: #343a40;
+            font-family: 'Fira Code', 'Cascadia Code', 'Consolas', monospace;
+            font-size: 0.9em;
+            border: 1px solid #dee2e6;
+        }
+        body.dark-theme .code-snippet {
+            background-color: #3b3b3b;
+            color: #e9ecef;
+            border-color: #495057;
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="./index.html">Bootstrap</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="./index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="./funcionalidades.html">Funcionalidades</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="./sobre.html">Sobre</a>
+                    </li>
+                    
+                </ul>
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <button class="btn btn-link nav-link" id="theme-toggle" aria-label="Alternar tema">
+                            <i class="bi bi-moon-fill" id="theme-icon"></i>
+                        </button>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="section-header">
+        <div class="container">
+            <h1 class="display-4">Funcionalidades e Uso do Bootstrap</h1>
+            <p class="lead">Descubra as principais ferramentas e como aplicá-las em seu projeto.</p>
+        </div>
+    </div>
+
+    <div class="container my-5">
+        <h2 class="text-center mb-4">Principais Funcionalidades do Bootstrap</h2>
+        <p class="text-center mb-5">O Bootstrap é um verdadeiro canivete suíço para o desenvolvedor front-end. Conheça as ferramentas essenciais que ele oferece:</p>
+
+        <div class="row text-center mb-5">
+            <div class="col-lg-4 col-md-6 mb-4">
+                <div class="card h-100 shadow-sm">
+                    <div class="card-body">
+                        <i class="bi bi-grid-3x3-gap-fill feature-icon"></i>
+                        <h5 class="card-title">Sistema de Grid Responsivo</h5>
+                        <p class="card-text">O coração do Bootstrap! Um sistema de grid de 12 colunas baseado em Flexbox que permite criar layouts responsivos e complexos para qualquer tamanho de tela.</p>
+                        <p class="small text-muted">Classes comuns: <code>.container</code>, <code>.row</code>, <code>.col-*</code>, <code>.col-sm-*</code>, <code>.col-md-*</code>, etc.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6 mb-4">
+                <div class="card h-100 shadow-sm">
+                    <div class="card-body">
+                        <i class="bi bi-puzzle-fill feature-icon"></i>
+                        <h5 class="card-title">Componentes CSS Pré-Estilizados</h5>
+                        <p class="card-text">Botões, formulários, alertas, badges, cards, tipografia, tabelas e muito mais, todos com estilos padrão elegantes e prontos para uso.</p>
+                        <p class="small text-muted">Ex: <code>.btn .btn-primary</code>, <code>.form-control</code>, <code>.alert</code>, <code>.card</code>.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6 mb-4">
+                <div class="card h-100 shadow-sm">
+                    <div class="card-body">
+                        <i class="bi bi-code-slash feature-icon"></i>
+                        <h5 class="card-title">Plugins JavaScript Interativos</h5>
+                        <p class="card-text">Recursos interativos como carrosséis, modais (pop-ups), dropdowns, tooltips, abas e muito mais.</p>
+                        <p class="small text-muted">Ex: Data attributes (<code>data-bs-toggle</code>) ou JavaScript API.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6 mb-4">
+                <div class="card h-100 shadow-sm">
+                    <div class="card-body">
+                        <i class="bi bi-tools feature-icon"></i>
+                        <h5 class="card-title">Classes Utilitárias</h5>
+                        <p class="card-text">Classes para controle de espaçamento (margens e paddings), cores, bordas, sombras, alinhamento de texto, display e muito mais.</p>
+                        <p class="small text-muted">Ex: <code>.mt-3</code>, <code>.p-4</code>, <code>.text-center</code>, <code>.d-flex</code>.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6 mb-4">
+                <div class="card h-100 shadow-sm">
+                    <div class="card-body">
+                        <i class="bi bi-paint-bucket feature-icon"></i>
+                        <h5 class="card-title">Personalização Flexível</h5>
+                        <p class="card-text">Embora venha com um design padrão, o Bootstrap é altamente customizável via SASS, variáveis CSS e classes de utilitários.</p>
+                        <p class="small text-muted">Altere cores, fontes, tamanhos, e muito mais para se adequar à sua marca.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6 mb-4">
+                <div class="card h-100 shadow-sm">
+                    <div class="card-body">
+                        <i class="bi bi-phone feature-icon"></i>
+                        <h5 class="card-title">Abordagem Mobile-First</h5>
+                        <p class="card-text">Construído pensando primeiramente em dispositivos móveis, garantindo uma excelente experiência em telas pequenas antes de expandir para maiores.</p>
+                        <p class="small text-muted">Otimização para telas pequenas é o ponto de partida.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <hr class="featurette-divider my-5">
+
+        <h2 class="text-center mb-4">Como Utilizar o Bootstrap em um Código Já Pronto</h2>
+        <p class="text-center mb-5">Integrar o Bootstrap em um projeto existente é simples e pode transformar rapidamente sua interface. Siga estes passos:</p>
+
+        <div class="row mb-4">
+            <div class="col-md-6 offset-md-3">
+                <div class="card shadow-sm p-4">
+                    <h5 class="card-title text-center mb-3">1. Incluir os Arquivos CDN</h5>
+                    <p>A forma mais rápida de usar o Bootstrap é adicionando seus links CDN no seu HTML. Copie os links para o CSS e JavaScript da documentação oficial (getbootstrap.com).</p>
+                    <div class="code-snippet">
+                        &lt;!-- No &lt;head&gt; para o CSS --&gt;<br>
+                        &lt;link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous"&gt;<br><br>
+                        &lt;!-- Antes do fechamento &lt;/body&gt; para o JS --&gt;<br>
+                        &lt;script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"&gt;&lt;/script&gt;
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row mb-4">
+            <div class="col-md-6 offset-md-3">
+                <div class="card shadow-sm p-4">
+                    <h5 class="card-title text-center mb-3">2. Aplicar Classes do Bootstrap</h5>
+                    <p>Inicie a substituição ou adição de classes Bootstrap aos seus elementos HTML existentes. Por exemplo, transforme um botão simples:</p>
+                    <div class="code-snippet">
+                        &lt;!-- Código HTML original --&gt;<br>
+                        &lt;button&gt;Clique Aqui&lt;/button&gt;<br><br>
+                        &lt;!-- Com classes Bootstrap --&gt;<br>
+                        &lt;button class="btn btn-primary"&gt;Clique Aqui&lt;/button&gt;
+                    </div>
+                    <p class="mt-3">Para criar um layout responsivo, envolva suas seções com <code>.container</code>, e use <code>.row</code> e <code>.col-*</code> para definir colunas:</p>
+                    <div class="code-snippet">
+                        &lt;div class="container"&gt;<br>
+                        &nbsp;&nbsp;&lt;div class="row"&gt;<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&lt;div class="col-md-6"&gt;Conteúdo Coluna 1&lt;/div&gt;<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&lt;div class="col-md-6"&gt;Conteúdo Coluna 2&lt;/div&gt;<br>
+                        &nbsp;&nbsp;&lt;/div&gt;<br>
+                        &lt;/div&gt;
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row mb-4">
+            <div class="col-md-6 offset-md-3">
+                <div class="card shadow-sm p-4">
+                    <h5 class="card-title text-center mb-3">3. Utilizar Componentes e Utilitários</h5>
+                    <p>Explore a documentação do Bootstrap para encontrar componentes que se encaixem no seu design. Por exemplo, para adicionar um card:</p>
+                    <div class="code-snippet">
+                        &lt;div class="card" style="width: 18rem;"&gt;<br>
+                        &nbsp;&nbsp;&lt;img src="..." class="card-img-top" alt="..."&gt;<br>
+                        &nbsp;&nbsp;&lt;div class="card-body"&gt;<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&lt;h5 class="card-title"&gt;Título do Card&lt;/h5&gt;<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&lt;p class="card-text"&gt;Algum texto de exemplo.&lt;/p&gt;<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&lt;a href="#" class="btn btn-primary"&gt;Ver mais&lt;/a&gt;<br>
+                        &nbsp;&nbsp;&lt;/div&gt;<br>
+                        &lt;/div&gt;
+                    </div>
+                    <p class="mt-3">Use classes utilitárias para ajustes finos, como margens e paddings, sem criar CSS adicional:</p>
+                    <div class="code-snippet">
+                        &lt;div class="text-center mt-5 p-3 border rounded"&gt;<br>
+                        &nbsp;&nbsp;Este é um exemplo de texto centralizado com margem superior, padding, borda e cantos arredondados.<br>
+                        &lt;/div&gt;
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="text-center mt-5">
+            <p class="lead">Lembre-se: A documentação oficial do Bootstrap é seu melhor amigo para descobrir todas as classes e componentes disponíveis!</p>
+            <a href="https://getbootstrap.com/docs/5.3/getting-started/introduction/" target="_blank" class="btn btn-info btn-lg">Acessar Documentação Oficial</a>
+        </div>
+    </div>
+
+    <footer class="footer mt-5">
+        <div class="container">
+            <p>&copy; 2025 Gustavo de Assis Coutinho. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const themeToggleBtn = document.getElementById('theme-toggle');
+            const themeIcon = document.getElementById('theme-icon');
+            const body = document.body;
+
+            function applySavedTheme() {
+                const savedTheme = localStorage.getItem('theme');
+                if (savedTheme === 'dark') {
+                    body.classList.add('dark-theme');
+                    themeIcon.classList.remove('bi-moon-fill');
+                    themeIcon.classList.add('bi-sun-fill');
+                } else {
+                    body.classList.remove('dark-theme');
+                    themeIcon.classList.remove('bi-sun-fill');
+                    themeIcon.classList.add('bi-moon-fill');
+                }
+            }
+
+            applySavedTheme();
+
+            themeToggleBtn.addEventListener('click', function() {
+                if (body.classList.contains('dark-theme')) {
+                    body.classList.remove('dark-theme');
+                    themeIcon.classList.remove('bi-sun-fill');
+                    themeIcon.classList.add('bi-moon-fill');
+                    localStorage.setItem('theme', 'light');
+                } else {
+                    body.classList.add('dark-theme');
+                    themeIcon.classList.remove('bi-moon-fill');
+                    themeIcon.classList.add('bi-sun-fill');
+                    localStorage.setItem('theme', 'dark');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
